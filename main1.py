@@ -142,11 +142,11 @@ def cam_run(threadName, delay):
 
                 out_1, out_2 = predict(model_4labels, path)
                 #print out_1
-                if out_2[0] == 0:
+                if out_2[0] == 0: # NG
                     print 'NG'
-                elif out_2[0] == 1:
+                elif out_2[0] == 1: # OK
                     print 'OK'
-                elif out_2[0] == 2:
+                elif out_2[0] == 2: # COLOR
                     img = cv2.imread(path, 0)
                     ret, thresh = cv2.threshold(img, 100, 255, cv2.THRESH_TOZERO)
                     median = cv2.medianBlur(thresh, 3)
@@ -157,7 +157,7 @@ def cam_run(threadName, delay):
                         print 'OK'
                     else:
                         print 'COLOR'
-                else:
+                else: # BARI
                     print 'BARI'
             index += 1  # Create two threads as follows
 try:
